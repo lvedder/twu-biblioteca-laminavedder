@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 public class Library {
 
-    static ArrayList<Book> books;
+    private ArrayList<Book> books;
 
     public Library(ArrayList books) {
         this.books = books;
     }
 
-    public static String listOfBooks() {
+    public String listOfBooks() {
         String bookList = "";
         for(Book book : books) {
             bookList = bookList + book.toString() + "\n";

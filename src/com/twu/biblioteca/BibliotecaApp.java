@@ -9,7 +9,8 @@ public class BibliotecaApp {
     public static void main(String[] args) {
         setUpBooks();
         System.out.println(welcomeMessage());
-        System.out.println(listOfBooks());
+        System.out.println(new Library(books).listOfBooks());
+
     }
 
     private static void setUpBooks() {
@@ -21,9 +22,5 @@ public class BibliotecaApp {
     public static String welcomeMessage() {
         String msg = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!";
         return msg;
-    }
-
-    public static String listOfBooks() {
-        return new Library(books).listOfBooks();
     }
 }
