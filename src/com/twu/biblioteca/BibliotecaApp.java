@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class BibliotecaApp {
 
@@ -9,8 +10,7 @@ public class BibliotecaApp {
     public static void main(String[] args) {
         setUpBooks();
         System.out.println(welcomeMessage());
-        System.out.println(new Library(books).listOfBooks());
-
+        getUserChoice();
     }
 
     private static void setUpBooks() {
@@ -22,5 +22,18 @@ public class BibliotecaApp {
     public static String welcomeMessage() {
         String msg = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!";
         return msg;
+    }
+
+    public static void getUserChoice() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("1\t List of books");
+        System.out.println("Please enter your choice:");
+        int choice = input.nextInt();
+        switch (choice) {
+            case 1:
+                System.out.println(new Library(books).listOfBooks());
+                break;
+            default: System.out.println("Please select a valid option!");
+        }
     }
 }
