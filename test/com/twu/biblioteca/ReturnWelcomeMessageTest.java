@@ -2,12 +2,14 @@ package com.twu.biblioteca;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
+
 
 public class ReturnWelcomeMessageTest {
 
     @Test
-    public void shouldReturnAWelcomeMessage() {
-        assertEquals("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!", BibliotecaApp.welcomeMessage());
+    public void ReturnWelcomeMessageTest() {
+        assertThat(BibliotecaApp.welcomeMessage() , is("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!"));
     }
 }
