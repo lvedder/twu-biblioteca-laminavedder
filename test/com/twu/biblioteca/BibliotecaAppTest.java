@@ -2,7 +2,7 @@ package com.twu.biblioteca;
 
 import org.junit.Test;
 
-import static org.hamcrest.CoreMatchers.equalTo;
+import static com.twu.biblioteca.BibliotecaApp.books;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -17,9 +17,14 @@ public class BibliotecaAppTest {
     @Test
     public void printBookListTest() {
         //given
-        String fakeListOfBooks = "The Big Five For Life\nDas Cafe am Rande der Welt\nThe Alchemist";
+        String fakeListOfBooks = "The Big Five For Life" + "\t\t" + "John Strelecky" + "\t\t" + "2008\n" +
+                "The Why Are You Here Cafe" + "\t\t" + "John Strelecky" + "\t\t" + "2003\n";
+
+        BibliotecaApp.setUpBooks();
+
         //when
         String result = BibliotecaApp.listOfBooks();
+
         //then
         assertThat(result, is(fakeListOfBooks));
     }
