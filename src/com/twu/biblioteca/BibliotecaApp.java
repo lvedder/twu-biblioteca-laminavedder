@@ -27,13 +27,21 @@ public class BibliotecaApp {
     public static void getUserChoice() {
         Scanner input = new Scanner(System.in);
         System.out.println("1\t List of books");
+        System.out.println("6\t Exit Biblioteca");
         System.out.println("Please enter your choice:");
         int choice = input.nextInt();
-        switch (choice) {
+        do switch (choice) {
             case 1:
                 System.out.println(new Library(books).listOfBooks());
+                System.out.println("What would you like to do next?");
+                choice = input.nextInt();
                 break;
-            default: System.out.println("Please select a valid option!");
+            case 6:
+                System.out.println("Goodbye. Thank you for using Biblioteca!");
+                break;
+            default:
+                System.out.println("Please select a valid option!");
+                choice = input.nextInt();
+        } while (choice != 6);
         }
     }
-}
