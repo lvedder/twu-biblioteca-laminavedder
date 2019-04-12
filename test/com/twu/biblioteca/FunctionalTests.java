@@ -21,6 +21,8 @@ public class FunctionalTests {
     private final ByteArrayInputStream inContent = new ByteArrayInputStream("1\n6".getBytes());
     private final ByteArrayInputStream errInput = new ByteArrayInputStream("0\n6".getBytes());
     private final ByteArrayInputStream exitInput = new ByteArrayInputStream("6".getBytes());
+    private final ByteArrayInputStream selectInput = new ByteArrayInputStream("2\nThe Why Are You Here Vafe\n6".getBytes());
+    private final ByteArrayInputStream nonExistInput = new ByteArrayInputStream("2\nThe Why Are You Here Vafe\n6".getBytes());
     private final InputStream originalIn = System.in;
 
     @Before
@@ -62,5 +64,19 @@ public class FunctionalTests {
         System.setIn(exitInput);
         BibliotecaApp.main(new String[0]);
         assertThat(outContent.toString(), containsString("Goodbye. Thank you for using Biblioteca!"));
+    }
+
+    @Test
+    public void selectBookTest() {
+        System.setIn(selectInput);
+        BibliotecaApp.main(new String[0]);
+        assertThat(outContent.toString(), containsString("Which book would you like to borrow? Please provide a title."));
+    }
+
+    @Test
+    public void bookIsNotAvailableTest() {
+        System.setIn(nonExistInput);
+        BibliotecaApp.main(new String[0]);
+        assertThat(outContent.toString(), containsString("Sorry, that book is not available"));
     }
 }
