@@ -25,6 +25,7 @@ public class FunctionalTests {
     private final ByteArrayInputStream nonExistInput = new ByteArrayInputStream("2\nThe Alchemist\n2\nThe Alchemist\n6".getBytes());
     private final ByteArrayInputStream returnInput = new ByteArrayInputStream("2\nThe Alchemist\n3\nThe Alchemist\n1\n6\n".getBytes());
     private final ByteArrayInputStream returnErrInput = new ByteArrayInputStream("3\nXYZ\n1\n6".getBytes());
+    private final ByteArrayInputStream movieInput = new ByteArrayInputStream("4\n6".getBytes());
     private final InputStream originalIn = System.in;
 
     @Before
@@ -101,5 +102,12 @@ public class FunctionalTests {
         System.setIn(returnErrInput);
         BibliotecaApp.main(new String[0]);
         assertThat(outContent.toString(), containsString("That is not a valid book to return."));
+    }
+
+    @Test
+    public void listMoviesTest() {
+        System.setIn(movieInput);
+        BibliotecaApp.main(new String[0]);
+        assertThat(outContent.toString(), containsString("1\t\tInception\t\tChristopher Nolan\t\t2010\t\t7"));
     }
 }

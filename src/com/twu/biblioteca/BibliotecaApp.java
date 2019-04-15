@@ -7,9 +7,11 @@ public class BibliotecaApp {
 
     public static final int LIST_BOOK_OPTION = 1;
     static ArrayList<Book> books = new ArrayList<Book>();
+    private static ArrayList<Movie> movies = new ArrayList<Movie>();
 
     public static void main(String[] args) {
         setUpBooks();
+        setUpMovies();
         System.out.println(welcomeMessage());
         getUserChoice();
     }
@@ -20,18 +22,28 @@ public class BibliotecaApp {
         books.add(new Book("The Alchemist", "Paulo Coelho", "1988"));
     }
 
+    private static void setUpMovies() {
+        movies.add(new Movie("Inception", "Christopher Nolan", "2010", "7"));
+        movies.add(new Movie("Interstellar", "Christopher Nolan", "2014", "8"));
+    }
+
     public static String welcomeMessage() {
         String msg = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!";
         return msg;
     }
 
-    public static void getUserChoice() {
-        Scanner input = new Scanner(System.in);
+    public static void systemOutput() {
         System.out.println("1\tList of books");
         System.out.println("2\tSelect a book");
         System.out.println("3\tReturn a book");
+        System.out.println("4\tList of movies");
         System.out.println("6\tExit Biblioteca");
         System.out.println("Please enter your choice:");
+    }
+
+    public static void getUserChoice() {
+        Scanner input = new Scanner(System.in);
+        systemOutput();
         int choice;
         do {
             System.out.println("What would you like to do next?");
@@ -68,6 +80,8 @@ public class BibliotecaApp {
                     } else {
                         System.out.println("That is not a valid book to return.");
                     }
+                case 4:
+                    movieList();
                 case 6:
                     System.out.println("Goodbye. Thank you for using Biblioteca!");
                     break;
@@ -75,5 +89,11 @@ public class BibliotecaApp {
                     System.out.println("Please select a valid option!");
             }
         } while (choice != 6);
+    }
+
+    public static void movieList() {
+        MovieLibrary movieLib = new MovieLibrary(movies);
+        String list = movieLib.listOfMovies();
+        System.out.println(list);
     }
 }
