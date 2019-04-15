@@ -27,9 +27,10 @@ public class BibliotecaApp {
 
     public static void getUserChoice() {
         Scanner input = new Scanner(System.in);
-        System.out.println("1\t List of books");
-        System.out.println("2\t Select a book");
-        System.out.println("6\t Exit Biblioteca");
+        System.out.println("1\tList of books");
+        System.out.println("2\tSelect a book");
+        System.out.println("3\tReturn a book");
+        System.out.println("6\tExit Biblioteca");
         System.out.println("Please enter your choice:");
         int choice;
         do {
@@ -54,6 +55,19 @@ public class BibliotecaApp {
                         System.out.println("Sorry, that book is not available");
                     }
                     break;
+                case 3:
+                    System.out.println("Which book would you like to return? Please provide the title.");
+                    String returnBook;
+                    do {
+                        returnBook = input.nextLine();
+                    } while (returnBook.equals(""));
+                    Library currLib = new Library(books);
+                    if (currLib.isNotInStock(returnBook)) {
+                        currLib.addBook(returnBook);
+                        System.out.println("Thank you for returning the book.");
+                    } else {
+                        System.out.println("That is not a valid book to return.");
+                    }
                 case 6:
                     System.out.println("Goodbye. Thank you for using Biblioteca!");
                     break;

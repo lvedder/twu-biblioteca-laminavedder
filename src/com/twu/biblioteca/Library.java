@@ -30,12 +30,30 @@ public class Library {
         return false;
     }
 
+    public Boolean isNotInStock(String title) {
+        for (Book book: books) {
+            if (book.getTitle().equals(title) && !book.isInStock()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public String removeBook(String title) {
         for(Book book: books) {
             if (book.getTitle().equals(title)) {
                 book.setInStock(false);
                 listOfBooks();
-                System.out.println(listOfBooks());
+            }
+        }
+        return listOfBooks();
+    }
+
+    public String addBook(String title) {
+        for (Book book: books) {
+            if (book.getTitle().equals(title)) {
+                book.setInStock(true);
+                listOfBooks();
             }
         }
         return listOfBooks();
