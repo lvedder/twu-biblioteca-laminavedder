@@ -5,11 +5,13 @@ public class Book {
     private String title;
     private String author;
     private String year;
+    private boolean isInStock;
 
     public Book(String title, String author, String year) {
         this.title = title;
         this.author = author;
         this.year = year;
+        this.isInStock = true;
     }
 
     public String getTitle() {
@@ -29,4 +31,11 @@ public class Book {
         return title + "\t\t" + author + "\t\t" + year;
     }
 
+    public void setInStock(boolean inStock) {
+        isInStock = inStock;
+    }
+
+    public boolean isInStock() {
+        return isInStock;
+    }
 }

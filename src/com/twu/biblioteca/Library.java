@@ -13,7 +13,9 @@ public class Library {
     public String listOfBooks() {
         String bookList = "";
         for(int i = 0; i < books.size(); i++) {
-            bookList = bookList + (i+1) + "\t\t" + books.get(i).getTitle() + "\t\t" + books.get(i).getAuthor() + "\t\t" + books.get(i).getYear() + "\n";
+            if (books.get(i).isInStock()) {
+                bookList = bookList + (i + 1) + "\t\t" + books.get(i).getTitle() + "\t\t" + books.get(i).getAuthor() + "\t\t" + books.get(i).getYear() + "\n";
+            }
         }
         return bookList;
     }
@@ -21,7 +23,7 @@ public class Library {
 
     public Boolean hasBook(String title) {
         for(Book book: books) {
-            if (book.getTitle().equals(title)) {
+            if (book.getTitle().equals(title) && book.isInStock()) {
                 return true;
             }
         }
@@ -31,8 +33,9 @@ public class Library {
     public String removeBook(String title) {
         for(Book book: books) {
             if (book.getTitle().equals(title)) {
-                books.remove(book);
+                book.setInStock(false);
                 listOfBooks();
+                System.out.println(listOfBooks());
             }
         }
         return listOfBooks();
