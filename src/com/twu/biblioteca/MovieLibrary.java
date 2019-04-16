@@ -17,4 +17,23 @@ public class MovieLibrary {
         }
         return movieList;
     }
+
+    public Boolean hasMovie(String title) {
+        for(Movie movie: movies) {
+            if (movie.getTitle().equals(title) && movie.isAvailable()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public String borrowMovie(String title) {
+        for(Movie movie: movies) {
+            if (movie.getTitle().equals(title)) {
+                movie.setIsAvailable(false);
+                listOfMovies();
+            }
+        }
+        return listOfMovies();
+    }
 }

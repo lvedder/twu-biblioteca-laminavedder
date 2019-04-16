@@ -35,4 +35,8 @@ public class Movie {
     public boolean isAvailable() {
         return isAvailable;
     }
+
+    public void setIsAvailable(boolean availability) {
+        isAvailable = availability;
+    }
 }
