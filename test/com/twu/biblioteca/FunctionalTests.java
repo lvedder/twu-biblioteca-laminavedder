@@ -109,13 +109,13 @@ public class FunctionalTests {
     public void listMoviesTest() {
         System.setIn(movieInput);
         BibliotecaApp.main(new String[0]);
-        assertThat(outContent.toString(), containsString("1\t\tInception\t\tChristopher Nolan\t\t2010\t\t7"));
+        assertThat(outContent.toString(), containsString("2\t\tInterstellar\t\tChristopher Nolan\t\t2014\t\t8"));
     }
 
     @Test
     public void borrowMovieTest() {
         System.setIn(borrowMovieInput);
         BibliotecaApp.main(new String[0]);
-        assertThat(outContent.toString(), containsString("Thank you for borrowing a movie with Biblioteca App"));
+        assertThat(outContent.toString(), containsString("Thank you for lending a movie with Biblioteca App"));
     }
 }

@@ -37,7 +37,7 @@ public class BibliotecaApp {
         System.out.println("2\tSelect a book");
         System.out.println("3\tReturn a book");
         System.out.println("4\tList of movies");
-        System.out.println("5\tBorrow a movie");
+        System.out.println("5\tLend a movie");
         System.out.println("6\tExit Biblioteca");
         System.out.println("Please enter your choice:");
     }
@@ -85,7 +85,7 @@ public class BibliotecaApp {
                     movieList();
                     break;
                 case 5:
-                    System.out.println("Which movie would you like to borrow? Please provide a title.");
+                    System.out.println("Which movie would you like to lend? Please provide a title.");
                     String movieChoice;
                     do {
                         movieChoice = input.nextLine();
@@ -93,7 +93,7 @@ public class BibliotecaApp {
                     MovieLibrary movLib = new MovieLibrary(movies);
                     if (movLib.hasMovie(movieChoice)) {
                         movLib.borrowMovie(movieChoice);
-                        System.out.println("Thank you for borrowing a movie with Biblioteca App");
+                        System.out.println("Thank you for lending a movie with Biblioteca App");
                     } else {
                         System.out.println("Sorry, that movie is not available");
                     }
