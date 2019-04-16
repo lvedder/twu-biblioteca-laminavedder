@@ -120,6 +120,7 @@ public class BibliotecaApp {
                         case 6:
                             System.out.println("Goodbye. Thank you for using Biblioteca!");
                             break;
+                        //TODO: 2.4 Add case 7 in which user can access his/her user information (name, email and phone number)
                         default:
                             System.out.println("Please select a valid option!");
                     }

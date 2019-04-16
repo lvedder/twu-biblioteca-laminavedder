@@ -10,6 +10,8 @@ public class UserLib {
         this.users = users;
     }
 
+    //TODO: Add function to access all user information (name, email and phone number)
+
     public Boolean validUserName(String num) {
         for (User user : users) {
             if (user.getLibraryNum().equals(num)) {
