@@ -30,9 +30,9 @@ public class BibliotecaApp {
     }
 
     private static void setUpUsers() {
-        users.add(new User("laminavedder","123-4567", "cologne"));
-        users.add(new User("andrewbentley", "111-2233", "melbourne"));
-        users.add(new User("andreasfreund", "111-2244", "trier"));
+        users.add(new User("123-4567", "cologne"));
+        users.add(new User( "111-2233", "melbourne"));
+        users.add(new User( "111-2244", "trier"));
     }
 
 

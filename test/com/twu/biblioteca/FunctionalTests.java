@@ -18,16 +18,16 @@ public class FunctionalTests {
     private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
     private final PrintStream originalErr = System.err;
-    private final ByteArrayInputStream inContent = new ByteArrayInputStream("laminavedder\ncologne\n1\n6".getBytes());
-    private final ByteArrayInputStream errInput = new ByteArrayInputStream("laminavedder\ncologne\n0\n6".getBytes());
-    private final ByteArrayInputStream exitInput = new ByteArrayInputStream("laminavedder\ncologne\n6".getBytes());
-    private final ByteArrayInputStream selectInput = new ByteArrayInputStream("laminavedder\ncologne\n2\nThe Why Are You Here Cafe\n6".getBytes());
-    private final ByteArrayInputStream nonExistInput = new ByteArrayInputStream("laminavedder\ncologne\n2\nThe Alchemist\n2\nThe Alchemist\n6".getBytes());
-    private final ByteArrayInputStream returnInput = new ByteArrayInputStream("laminavedder\ncologne\n2\nThe Alchemist\n3\nThe Alchemist\n1\n6\n".getBytes());
-    private final ByteArrayInputStream returnErrInput = new ByteArrayInputStream("laminavedder\ncologne\n3\nXYZ\n1\n6".getBytes());
-    private final ByteArrayInputStream movieInput = new ByteArrayInputStream("laminavedder\ncologne\n4\n6".getBytes());
-    private final ByteArrayInputStream borrowMovieInput = new ByteArrayInputStream("laminavedder\ncologne\n5\nInception\n6".getBytes());
-    private final ByteArrayInputStream validUserInput = new ByteArrayInputStream("laminavedder\n".getBytes());
+    private final ByteArrayInputStream inContent = new ByteArrayInputStream("123-4567\ncologne\n1\n6".getBytes());
+    private final ByteArrayInputStream errInput = new ByteArrayInputStream("123-4567\ncologne\n0\n6".getBytes());
+    private final ByteArrayInputStream exitInput = new ByteArrayInputStream("123-4567\ncologne\n6".getBytes());
+    private final ByteArrayInputStream selectInput = new ByteArrayInputStream("123-4567\ncologne\n2\nThe Why Are You Here Cafe\n6".getBytes());
+    private final ByteArrayInputStream nonExistInput = new ByteArrayInputStream("123-4567\ncologne\n2\nThe Alchemist\n2\nThe Alchemist\n6".getBytes());
+    private final ByteArrayInputStream returnInput = new ByteArrayInputStream("123-4567\ncologne\n2\nThe Alchemist\n3\nThe Alchemist\n1\n6\n".getBytes());
+    private final ByteArrayInputStream returnErrInput = new ByteArrayInputStream("123-4567\ncologne\n3\nXYZ\n1\n6".getBytes());
+    private final ByteArrayInputStream movieInput = new ByteArrayInputStream("123-4567\ncologne\n4\n6".getBytes());
+    private final ByteArrayInputStream borrowMovieInput = new ByteArrayInputStream("123-4567\ncologne\n5\nInception\n6".getBytes());
+//    private final ByteArrayInputStream validUserInput = new ByteArrayInputStream("123-4567\n".getBytes());
     private final InputStream originalIn = System.in;
 
     @Before
