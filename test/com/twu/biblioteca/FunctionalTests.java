@@ -27,7 +27,7 @@ public class FunctionalTests {
     private final ByteArrayInputStream returnErrInput = new ByteArrayInputStream("123-4567\ncologne\n3\nXYZ\n1\n6".getBytes());
     private final ByteArrayInputStream movieInput = new ByteArrayInputStream("123-4567\ncologne\n4\n6".getBytes());
     private final ByteArrayInputStream borrowMovieInput = new ByteArrayInputStream("123-4567\ncologne\n5\nInception\n6".getBytes());
-//    private final ByteArrayInputStream validUserInput = new ByteArrayInputStream("123-4567\n".getBytes());
+    private final ByteArrayInputStream userInfoInput = new ByteArrayInputStream("123-4567\ncologne\n7\n123-4567\n6".getBytes());
     private final InputStream originalIn = System.in;
 
     @Before
@@ -120,10 +120,11 @@ public class FunctionalTests {
         assertThat(outContent.toString(), containsString("Thank you for lending a movie with Biblioteca App"));
     }
 
-//    @Test
-//    public void validUserTest() {
-//        System.setIn(validUserInput);
-//        BibliotecaApp.main(new String[0]);
-//        assertThat(outContent.toString(), containsString("books"));
-//    }
+    @Test
+    public void printUserInformationTest() {
+        System.setIn(userInfoInput);
+        BibliotecaApp.main(new String[0]);
+        assertThat(outContent.toString(), containsString("E-Mail: lamina.vedder@thoughtworks.com"));
+    }
+
 }

@@ -31,4 +31,14 @@ public class UserLib {
         }
         return false;
     }
+
+    public String getUserInformation(String LibraryNum) {
+        String info = "";
+        for (User user : users) {
+            if (user.getLibraryNum().equals(LibraryNum)) {
+                info = info + "\n" + user.toString();
+            }
+        }
+        return info;
+    }
 }
