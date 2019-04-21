@@ -1,0 +1,69 @@
+1. Who checked out the book 'The Hobbit’? - Anand Beck
+
+
+sqlite> SELECT m.name
+   ...> FROM member m
+   ...> LEFT JOIN checkout_item ci ON ci.member_id = m.id
+   ...> LEFT JOIN book b ON b.id = ci.book_id
+   ...> WHERE b.title = "The Hobbit";
+
+2. How many people have not checked out anything? - 37
+
+sqlite> SELECT count (*)
+   ...> FROM member
+   ...> WHERE id not in
+   ...> (SELECT checkout_item.member_id FROM checkout_item);
+37
+
+3. What books and movies aren't checked out?
+
+sqlite> SELECT m.title
+   ...> FROM movie m
+   ...> LEFT JOIN checkout_item ci ON m.id = ci.movie_id
+   ...> WHERE movie_id is null;
+
+Thin Red Line
+Crouching Tiger, Hidden Dragon
+Lawrence of Arabia
+Office Space
+
+sqlite> SELECT b.title
+   ...> FROM book b
+   ...> LEFT JOIN checkout_item ci ON ci.book_id = b.id
+   ...> WHERE ci.book_id is null;
+
+Fellowship of the Ring
+1984
+Tom Sawyer
+Catcher in the Rye
+To Kill a Mockingbird
+Domain Driven Design
+
+4. Add the book 'The Pragmatic Programmer', and add yourself as a member.
+   Check out 'The Pragmatic Programmer'.
+   Use your query from question 1 to verify that you have checked it out.
+   Also, provide the SQL used to update the database.
+
+sqlite> INSERT INTO book (id, title) VALUES (11, "The Pragmatic Programmer");
+sqlite> INSERT INTO member (id, name) VALUES (43, "Lamina Vedder")
+sqlite> INSERT INTO checkout_item (member_id, book_id) VALUES (43, 11);
+sqlite> SELECT m.name
+   ...> FROM member m
+   ...> LEFT JOIN checkout_item ci ON ci.member_id = m.id
+   ...> WHERE ci.member_id = 43;
+
+5. Who has checked out more than 1 item? Tip: Research the GROUP BY syntax.
+
+Anand Beck|3
+Frank Smith|3
+Julian Listov|1
+Lamina Vedder|1
+Sneha Carmack|1
+Yaxuan Evans|1
+
+
+sqlite> SELECT m.name, COUNT(*) AS total
+   ...> FROM member m
+   ...> LEFT JOIN checkout_item ci ON ci.member_id = m.id
+   ...> WHERE ci.book_id IS NOT NULL OR ci.movie_id IS NOT NULL
+   ...> GROUP BY m.name;
