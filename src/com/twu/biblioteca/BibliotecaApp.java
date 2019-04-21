@@ -14,7 +14,7 @@ public class BibliotecaApp {
         setUpBooks();
         setUpMovies();
         setUpUsers();
-        System.out.println(welcomeMessage());
+        stringOutput(welcomeMessage());
         getUserChoice();
     }
 
@@ -42,18 +42,18 @@ public class BibliotecaApp {
     }
 
     public static void systemOutput() {
-        System.out.println("1\tList of books");
-        System.out.println("2\tSelect a book");
-        System.out.println("3\tReturn a book");
-        System.out.println("4\tList of movies");
-        System.out.println("5\tLend a movie");
-        System.out.println("6\tExit Biblioteca");
-        System.out.println("7\tYour user info");
-        System.out.println("Please enter your choice:");
+        stringOutput("1\tList of books");
+        stringOutput("2\tSelect a book");
+        stringOutput("3\tReturn a book");
+        stringOutput("4\tList of movies");
+        stringOutput("5\tLend a movie");
+        stringOutput("6\tExit Biblioteca");
+        stringOutput("7\tYour user info");
+        stringOutput("Please enter your choice:");
     }
 
     public static Boolean validateUser(Scanner input) {
-        System.out.println("Please provide your library number");
+        stringOutput("Please provide your library number");
         String user;
         do {
             user = input.nextLine();
@@ -62,7 +62,7 @@ public class BibliotecaApp {
         if (userLibNum.validUserName(user)) {
             String password;
             do {
-                System.out.println("Please enter your password:");
+                stringOutput("Please enter your password:");
                 password = input.nextLine();
             } while (password.equals(""));
             if (userLibNum.validPassword(user, password)) return true;
@@ -77,7 +77,7 @@ public class BibliotecaApp {
             systemOutput();
             int choice;
             do {
-                System.out.println("What would you like to do next?");
+                stringOutput("What would you like to do next?");
                 choice = input.nextInt();
                 switch (choice) {
                     case LIST_BOOK_OPTION:
@@ -96,23 +96,27 @@ public class BibliotecaApp {
                         lendMovie(input);
                         break;
                     case 6:
-                        System.out.println("Goodbye. Thank you for using Biblioteca!");
+                        stringOutput("Goodbye. Thank you for using Biblioteca!");
                         break;
                     case 7:
                         infoList(input);
                         break;
                     //TODO: 2.4 Add case 7 in which user can access his/her user information (name, email and phone number)
                     default:
-                        System.out.println("Please select a valid option!");
+                        stringOutput("Please select a valid option!");
                 }
             } while (choice != 6);
         } else {
-            System.out.println("Sorry, this is no valid library number and password.");
+            stringOutput("Sorry, this is no valid library number and password.");
         }
     }
 
+    private static void stringOutput(String s) {
+        System.out.println(s);
+    }
+
     private static void lendMovie(Scanner input) {
-        System.out.println("Which movie would you like to lend? Please provide a title.");
+        stringOutput("Which movie would you like to lend? Please provide a title.");
         String movieChoice;
         do {
             movieChoice = input.nextLine();
@@ -120,14 +124,14 @@ public class BibliotecaApp {
         MovieLibrary movLib = new MovieLibrary(movies);
         if (movLib.hasMovie(movieChoice)) {
             movLib.borrowMovie(movieChoice);
-            System.out.println("Thank you for lending a movie with Biblioteca App");
+            stringOutput("Thank you for lending a movie with Biblioteca App");
         } else {
-            System.out.println("Sorry, that movie is not available");
+            stringOutput("Sorry, that movie is not available");
         }
     }
 
     private static void returnItem(Scanner input) {
-        System.out.println("Which book would you like to return? Please provide the title.");
+        stringOutput("Which book would you like to return? Please provide the title.");
         String returnBook;
         do {
             returnBook = input.nextLine();
@@ -135,42 +139,42 @@ public class BibliotecaApp {
         Library currLib = new Library(books);
         if (currLib.isNotInStock(returnBook)) {
             currLib.addBook(returnBook);
-            System.out.println("Thank you for returning the book.");
+            stringOutput("Thank you for returning the book.");
         } else {
-            System.out.println("That is not a valid book to return.");
+            stringOutput("That is not a valid book to return.");
         }
     }
 
     private static void borrow(Scanner input) {
         System.out.println(new Library(books).listOfBooks());
-        System.out.println("Which book would you like to borrow? Please provide a title.");
+        stringOutput("Which book would you like to borrow? Please provide a title.");
         String bookChoice;
         do {
             bookChoice = input.nextLine();
         } while (bookChoice.equals(""));
         Library lib = new Library(books);
         if (lib.hasBook(bookChoice)) {
-            System.out.println("Thank you! Enjoy the book");
+            stringOutput("Thank you! Enjoy the book");
             lib.removeBook(bookChoice);
         } else {
-            System.out.println("Sorry, that book is not available");
+            stringOutput("Sorry, that book is not available");
         }
     }
 
     public static void infoList(Scanner input) {
-        System.out.println("Please provide your library number again.");
+        stringOutput("Please provide your library number again.");
         String libNum;
         do {
             libNum = input.nextLine();
         } while (libNum.equals(""));
         UserLib userInfo = new UserLib(users);
         String info = userInfo.getUserInformation(libNum);
-        System.out.println(info);
+        stringOutput(info);
     }
 
     public static void movieList() {
         MovieLibrary movieLib = new MovieLibrary(movies);
         String list = movieLib.listOfMovies();
-        System.out.println(list);
+        stringOutput(list);
     }
 }
